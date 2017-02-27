@@ -13,8 +13,9 @@ class Mastermind
     end
 
     def play
-        print "Enter 4-digit guess of digits 1-6\n> "
+        print "Enter guess of 4-digits, 1-6\n> "
         @guess = gets.chomp
+        #check guess is 4 digits between 1 and 6
         while (@guess.length != 4) || !(@guess =~ /[1-6]{4}/)
             print "Invalid guess. Try again \n> "
             @guess = gets.chomp
@@ -33,20 +34,25 @@ class Game
         @@guesses_remaining = 12
         @@master = [] 
         4.times do 
-            @@master << rand(0..9)
+            @@master << rand(1..6).to_s
         end
-        @@master = ["2","3","4","5"] # remove line for real game
+        @@master = ["1", "1", "2", "2"]
+
     end
 
     def self.check(guess)
-        if (@@guesses_remaining > 0)
+        @@temp = @@master.dup
+        if (@@guesses_remaining > 1)
             @correct = 0
             @position = 0
             for i in (0..3)
-                if (guess[i] == @@master[i])
+                if (guess[i] == @@temp[i])
                     @correct += 1
-                elsif
-                    @@master.include?(guess[i]) ; @position += 1
+                    @@temp[i] = "x"
+                elsif @@temp.include?(guess[i])
+                    @position += 1
+                    indx = @@temp.index(guess[i])
+                    @@temp[indx] = "x"
                 end
             end
             if @correct == 4
@@ -55,14 +61,18 @@ class Game
                 @@guesses_remaining -= 1
                 puts "Correct: #{@correct}"
                 puts "Out of Position: #{@position}"
-                puts "Guesses Remaining: #{@@guesses_remaining}"
-                return false
+                puts "Guesses Remaining: #{@@guesses_remaining}\n\n"
+                return true
             end
         else
-            puts "OUT OF TURNS\n\nGAME OVER!"
+            puts "\n\nOUT OF TURNS\n\nGAME OVER!\n\n"
             exit
         end
-        true
+    end
+
+    def self.winner
+        puts "\n\nYOU'VE SOLVED THE CODE!!\n\nYOU'VE SAVED THE WORLD FROM DONALD TRUMP!!\n\n"
+        exit
     end
 end
 
@@ -71,7 +81,7 @@ class Player
     attr_accessor :name
     def initialize
         puts "What is your name?"
-        @name = gets.chomp.capitalize
+        @name = gets.chomp.upcase
     end
 end
 

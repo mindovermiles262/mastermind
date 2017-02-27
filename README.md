@@ -1,14 +1,15 @@
 #Project Title
-Description.... [link](http://link_to_project)
+Mastermind is a code-breaking game invented in the 1970's by Mordecai Meirowitz.  The game is played using a decoding board, six different colored code pegs, and two different colored key pegs.  The CODEBREAKER tries to guess the pattern of the master code. After each guess one color of key is used to identify the number of pegs in the correct position and color. The other color of key peg is used to identify a peg that is the correct color, but not in the correct position. CODEBREAKER gets 12 tries to decode the secret code before losing the game.
 
 ##Use
+To use this program, download `mastermind.rb` file, then run in terminal via `ruby mastermind.rb`
 
 ##Development Languages
-* 
+* Ruby v2.3
 
 ##TODO
-1. 
-2. 
+1. Add play again?
+2. Fix indexing. When master code = 1122 and guess = 1221, should be 2 correct, 2 out of position.  (Indexing finds first instance of guess)
 
 ##Contributing
 Please follow a "fork-and-pull" workflow when Contributing
