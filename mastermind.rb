@@ -2,6 +2,7 @@ class Mastermind
     attr_accessor :guess
     def initialize
         system ('clear')
+        #welcome player to game
         puts "              ~~~ MASTERMIND ~~~\n\n"
         puts "CODEBREAKER gets 12 tries to decode secret code and"
         puts "save the world! After each guess the number of digits"
@@ -36,49 +37,63 @@ class Game
         4.times do 
             @@master << rand(1..6).to_s
         end
-        @@master = ["1", "1", "2", "2"]
-
     end
 
     def self.check(guess)
-        @@temp = @@master.dup
         if (@@guesses_remaining > 1)
+            @@temp = @@master.dup
             @correct = 0
             @position = 0
+            #check for perfect matches, replace in array with "x" or "y"
             for i in (0..3)
                 if (guess[i] == @@temp[i])
                     @correct += 1
                     @@temp[i] = "x"
-                elsif @@temp.include?(guess[i])
+                    guess[i] = "y"
+                end
+            end
+            for j in (0..3)
+                #compare temp[j] to all elements in guess, then change
+                #found digit in [guess] to "y"
+                if guess.include?(@@temp[j])
                     @position += 1
-                    indx = @@temp.index(guess[i])
-                    @@temp[indx] = "x"
+                    ind = guess.index(@@temp[j])
+                    guess[ind] = "y"
                 end
             end
             if @correct == 4
                 winner
             else
                 @@guesses_remaining -= 1
-                puts "Correct: #{@correct}"
+                puts "\n\nCorrect: #{@correct}"
                 puts "Out of Position: #{@position}"
                 puts "Guesses Remaining: #{@@guesses_remaining}\n\n"
                 return true
             end
         else
             puts "\n\nOUT OF TURNS\n\nGAME OVER!\n\n"
-            exit
+            play_again
         end
     end
 
     def self.winner
-        puts "\n\nYOU'VE SOLVED THE CODE!!\n\nYOU'VE SAVED THE WORLD FROM DONALD TRUMP!!\n\n"
-        exit
+        puts "\n\nYOU'VE SOLVED THE CODE\n\nAND SAVED THE WORLD FROM DONALD TRUMP!!\n\n"
+        play_again
+    end
+
+    def self.play_again
+        puts "Play again? (Y/N)"
+        play = gets.chomp.upcase
+        if play == "Y" || play == "YES"
+            Mastermind.new
+            exit
+        else
+            exit
+        end
     end
 end
 
-
 class Player 
-    attr_accessor :name
     def initialize
         puts "What is your name?"
         @name = gets.chomp.upcase
