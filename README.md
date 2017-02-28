@@ -6,6 +6,8 @@ Written for [The Odin Project's](http://www.theodinproject.com) Ruby course. Mor
 ##Use
 To use this program, download `mastermind.rb` file, then run in terminal via `ruby mastermind.rb`
 
+Alternativly, an online version can be found [here](https://repl.it/GBDh/0)
+
 ##Development Languages
 * Ruby v2.3
 
