@@ -1,7 +1,7 @@
 class Mastermind
-    attr_accessor :guess
     def initialize
-        system ('clear')
+        system('clear')
+        system('cls')
         #welcome player to game
         puts "              ~~~ MASTERMIND ~~~\n\n"
         puts "CODEBREAKER gets 12 tries to decode secret code and"
@@ -30,7 +30,6 @@ end
 
 # Rules for game
 class Game 
-    attr_accessor :correct, :position, :guesses_remaining
     def initialize
         @@guesses_remaining = 12
         @@master = [] 
@@ -65,13 +64,13 @@ class Game
                 winner
             else
                 @@guesses_remaining -= 1
-                puts "\n\nCorrect: #{@correct}"
+                puts "Correct: #{@correct}"
                 puts "Out of Position: #{@position}"
                 puts "Guesses Remaining: #{@@guesses_remaining}\n\n"
                 return true
             end
         else
-            puts "\n\nOUT OF TURNS\n\nGAME OVER!\n\n"
+            puts "\nOUT OF TURNS\n\nGAME OVER!\n\nTHE CODE WAS: #{@@master.join()}\n\n"
             play_again
         end
     end
