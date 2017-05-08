@@ -1,0 +1,26 @@
+<!-- index.erb -->
+
+<h1>Mastermind</h1>
+<h3>Enter a combination of 4 digits, 1-6</h3>
+<h3 style="color: red"><%= @message %></h3>
+
+<form method="post" action="/">
+	<input type="text" name="PLAYER_GUESS" size="4">
+	<input type="submit" value='submit' >
+</form>
+
+<table style="text-align: center">
+	<h3>Previous Guesses</h3>
+	<tr>
+		<th>Your Guess</th>
+		<th>Correct</th>
+		<th>Out of Position</th>
+	</tr>
+	<% @guessed_values.each do |line, c, oop| %>
+		<tr><td><%= line %></td> <td><%= c %></td> <td><%= oop %></td></ul>
+	<% end %>
+</table>
+
+<!-- <p>Master <%= @master %></p> -->
+
+<p>Guesses Remaining: <%= @guesses_remaining %></p>
