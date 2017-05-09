@@ -1,5 +1,15 @@
 <html>
-<body>
-<h1>WINNER</h1>
-</body>
+
+	<%= erb :header %>
+
+	<body>
+		<div class='wrapper'>
+			<h1>WINNER</h1>
+			<h3>The Secret Code was <%= @master %></h3>
+			<br />
+			<form action='/newgame'>
+				<input type='submit' value='Play Again?' />
+			</form>
+		</div>
+	</body>
 </html>

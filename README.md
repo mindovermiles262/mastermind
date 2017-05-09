@@ -18,9 +18,9 @@ Alternativly you may run this program using the included Sinatra framework by `b
 ## TODO
 1. ~~Add play again?~ Completed 02/27/2017
 2. ~~Fix indexing. When master code = 1122 and guess = 1221, should be: 2 correct, 2 out of position.  (Indexing finds first instance of guess)~~ Completed 02/27/2017
-3. Include CSS Styling
-4. Add Correct answer to Game Over Screen
-5. Render partials for header and footer
+3. ~~Include CSS Styling~~
+4. ~~Add Correct answer to Game Over Screen~~
+5. ~~Render partials for header and footer~~
 6. Deploy to Heroku
 
 ## Contributing

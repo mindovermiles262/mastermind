@@ -34,10 +34,12 @@ get '/newgame' do
 end
 
 get '/winner' do
+    set_vars
 	erb :winner
 end
 
 get '/game_over' do
+    set_vars
 	erb :game_over
 end
 
